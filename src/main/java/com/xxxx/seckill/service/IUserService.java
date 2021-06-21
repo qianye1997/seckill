@@ -20,4 +20,6 @@ public interface IUserService extends IService<User> {
 
     RespBean doLogin(HttpServletRequest request, HttpServletResponse response, LoginVo loginVo);
     User getByUserCookie(String ticket,HttpServletRequest request, HttpServletResponse response);
+    RespBean updatePassword(String userTicket, String password, HttpServletRequest request, HttpServletResponse response);
+    User getUserByCookie(String userTicket, HttpServletRequest request, HttpServletResponse response);
 }
