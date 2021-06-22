@@ -2,6 +2,7 @@ package com.xxxx.seckill.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.xxxx.seckill.exception.GlobalException;
 import com.xxxx.seckill.mapper.OrderMapper;
 import com.xxxx.seckill.pojo.Order;
 import com.xxxx.seckill.pojo.SeckillGoods;
@@ -12,6 +13,8 @@ import com.xxxx.seckill.service.IOrderService;
 import com.xxxx.seckill.service.ISeckillGoodsService;
 import com.xxxx.seckill.service.ISeckillOrderService;
 import com.xxxx.seckill.vo.GoodsVo;
+import com.xxxx.seckill.vo.OrderDetailVo;
+import com.xxxx.seckill.vo.RespBeanEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -59,6 +62,7 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         order.setStatus(0);
         order.setCreateDate(new Date());
         orderMapper.insert(order);
+
         //生成秒杀订单
         SeckillOrder seckillOrder = new SeckillOrder();
         seckillOrder.setOrderId(order.getId());
@@ -66,5 +70,18 @@ public class OrderServiceImpl extends ServiceImpl<OrderMapper, Order> implements
         seckillOrder.setGoodsId(goods.getId());
         seckillOrderService.save(seckillOrder);
         return order;
+    }
+
+    @Override
+    public OrderDetailVo detail(String orderId){
+        if(orderId==null){
+            throw new GlobalException(RespBeanEnum.ORDER_NOT_EXIST);
+        }
+        Order order=orderMapper.selectById(orderId);
+        GoodsVo goodsVo=goodsService.findGoodsVoByGoodsId(order.getGoodsId());
+        OrderDetailVo detail=new OrderDetailVo();
+        detail.setOrder(order);
+        detail.setGoodsVo(goodsVo);
+        return detail;
     }
 }

@@ -22,11 +22,11 @@ public class SeckillOrder implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private String id;
 
     private Long userId;
 
-    private Long orderId;
+    private String orderId;
 
     private Long goodsId;
 

@@ -25,7 +25,9 @@ public enum RespBeanEnum {
     SESSION_ERROR(500215,"session不存在或者已经失效"),
     //秒杀模块5005xx
     EMPTY_STOCK(500500,"库存为空"),
-    REPEATE_ERROR(500501,"每人限购一件");
+    REPEATE_ERROR(500501,"每人限购一件"),
+    //订单模块
+    ORDER_NOT_EXIST(500400,"订单不存在");
     private final Integer code;
     private final String message;
 }

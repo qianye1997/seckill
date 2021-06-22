@@ -1,4 +1,19 @@
 spring:
+  #静态资源处理
+  resources:
+    #启动默认静态资源处理
+    add-mappings: true
+    cache:
+      cachecontrol:
+        #缓存响应时间，单位秒
+        max-age: 3600
+    chain:
+      cache: true
+      enabled: true
+      #启用压缩资源解析
+      compressed: true
+      html-application-cache: true
+    static-locations: classpath:/static/
   #thymeleaf配置
   thymeleaf:
   # 关闭缓存
