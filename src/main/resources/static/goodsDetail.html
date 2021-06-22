@@ -41,10 +41,8 @@
                 <span id="seckillTip"></span>
             </td>
             <td>
-                <form id="secKillForm" method="post" action="/secKill/doSeckill">
-                    <input type="hidden" name="goodsId" id="goodsId">
-                    <button class="btn btn-primary btn-block" type="submit" id="buyButton">立即秒杀</button>
-                </form>
+                <input type="hidden" name="goodsId" id="goodsId">
+                <button class="btn btn-primary btn-block" type="submit" id="buyButton" onclick="doSeckill()">立即秒杀</button>
             </td>
         </tr>
         <tr>
@@ -115,17 +113,37 @@
                 countDown();
             }, 1000);
             // 秒杀进行中
-        } else if (remainSeconds === 0) {
+        } else if (remainSeconds<0) {
+            $("#buyButton").attr("disabled", true);
+            $("#seckillTip").html("秒杀已经结束");
+        } else {
             $("#buyButton").attr("disabled", false);
             if (timeout) {
                 clearTimeout(timeout);
             }
-            $("#seckillTip").html("秒杀进行中")
-        } else {
-            $("#buyButton").attr("disabled", true);
-            $("#seckillTip").html("秒杀已经结束");
+            $("#seckillTip").html("秒杀进行中");
         }
     };
+
+    function doSeckill(){
+        $.ajax({
+            url:'/secKill/doSeckill',
+            type:'POST',
+            data:{
+                goodsId:$("#goodsId").val()
+            },
+            success:function (data) {
+                if(data.code==200){
+                    window.location.href="orderDetail.html?orderId="+data.obj.id;
+                }else{
+                    layer.msg("客户端请求出错");
+                }
+            },
+            error:function () {
+                layer.msg("客户端请求出错");
+            }
+        })
+    }
 
 </script>
 </html>
