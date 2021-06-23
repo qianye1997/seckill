@@ -29,39 +29,39 @@ public class UserController {
         return RespBean.success();
     }
 
-    @RequestMapping("/mq")
-    @ResponseBody
-    public void mq(){
-        mqSender.send("Hello");
-    }
-
-    @RequestMapping("/mq/fanout")
-    @ResponseBody
-    public void mq01(){
-        mqSender.send("Hello");
-    }
-
-    @RequestMapping("/mq/direct01")
-    @ResponseBody
-    public void mq02(){
-        mqSender.send01("Hello");
-    }
-
-    @RequestMapping("/mq/direct02")
-    @ResponseBody
-    public void mq03(){
-        mqSender.send02("Hello");
-    }
-
-    @RequestMapping("/mq/topic03")
-    @ResponseBody
-    public void mq04(){
-        mqSender.send03("Hello");
-    }
-
-    @RequestMapping("/mq/topic04")
-    @ResponseBody
-    public void mq05(){
-        mqSender.send04("Hello");
-    }
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public void mq(){
+//        mqSender.send("Hello");
+//    }
+//
+//    @RequestMapping("/mq/fanout")
+//    @ResponseBody
+//    public void mq01(){
+//        mqSender.send("Hello");
+//    }
+//
+//    @RequestMapping("/mq/direct01")
+//    @ResponseBody
+//    public void mq02(){
+//        mqSender.send01("Hello");
+//    }
+//
+//    @RequestMapping("/mq/direct02")
+//    @ResponseBody
+//    public void mq03(){
+//        mqSender.send02("Hello");
+//    }
+//
+//    @RequestMapping("/mq/topic03")
+//    @ResponseBody
+//    public void mq04(){
+//        mqSender.send03("Hello");
+//    }
+//
+//    @RequestMapping("/mq/topic04")
+//    @ResponseBody
+//    public void mq05(){
+//        mqSender.send04("Hello");
+//    }
 }
