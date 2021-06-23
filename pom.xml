@@ -76,7 +76,11 @@
 <!--            <groupId>org.springframework.session</groupId>-->
 <!--            <artifactId>spring-session-data-redis</artifactId>-->
 <!--        </dependency>-->
-
+        <!-- AMPQ (rabbitmq) 依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
 
     </dependencies>
 

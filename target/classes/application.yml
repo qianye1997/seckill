@@ -41,6 +41,27 @@ spring:
         #最小空闲连接
         min-idle: 5
 
+  rabbitmq:
+    host: 47.98.35.243
+    username: guest
+    password: guest
+    virtual-host: /
+    port: 5672
+    listener:
+      simple:
+        concurrency: 10
+        max-concurrency: 10
+        prefetch: 1
+        auto-startup: true
+        default-requeue-rejected: true
+    template:
+      retry:
+        enabled: true
+        initial-interval: 1000ms
+        max-attempts: 3
+        max-interval: 10000ms
+        multiplier: 1
+
   # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
