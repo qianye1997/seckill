@@ -43,7 +43,7 @@ public class UserUtil {
             users.add(user);
         }
         System.out.println("create user");
-        // // //插入数据库
+         // //插入数据库
 //         Connection conn = getConn();
 //         String sql = "insert into t_user(login_count, nickname, register_date, salt, password, id)values(?,?,?,?,?,?)";
 //         PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -116,6 +116,6 @@ public class UserUtil {
     }
 
     public static void main(String[] args) throws Exception {
-        createUser(5000);
+        createUser(1000);
     }
 }
